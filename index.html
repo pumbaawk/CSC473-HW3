@@ -105,6 +105,7 @@
       const tbody = document.getElementById('gpaBody');
       const row = document.createElement('tr');
       
+      //The placeholder="Course #${courseCount++}" ensures that each new row displays a unique course number by incrementing courseCount each time a row is added.
       row.innerHTML = `
         <td><input type="checkbox" class="include-row" /></td>
         <td><input type="text" class="course-name" placeholder="Course #${courseCount++}" /></td>
@@ -125,7 +126,7 @@
       row.remove();
     }
 
-    function calculateGPA() {
+    function calculateGPA() {//Calculate the GPA of selected rows, or rows that are not empty.
       let totalPoints = 0;
       let totalCredits = 0;
 
@@ -148,7 +149,7 @@
       document.getElementById('result').textContent = `GPA: ${gpa}`;
     }
 
-    function resetTable() {
+    function resetTable() {//Reset selected rows, and if none are selected, display an alert.
       let isChecked = false;
       document.querySelectorAll('#gpaBody tr').forEach(row => {
         const checkbox = row.querySelector('.include-row');
@@ -173,7 +174,7 @@
       document.getElementById('selectAll').checked = false; // Uncheck Select All
     }
 
-    function selectAllRows() {
+    function selectAllRows() { //Reset the selected rows. If no rows are selected, a prompt will appear.
       const selectAllCheckbox = document.getElementById('selectAll');
       document.querySelectorAll('.include-row').forEach(checkbox => {
         checkbox.checked = selectAllCheckbox.checked;
